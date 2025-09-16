@@ -70,6 +70,8 @@ import {
 	N8nOption,
 	N8nSelect,
 	N8nText,
+	N8nModal,
+	N8nInput,
 } from '@n8n/design-system';
 import type { PathItem } from '@n8n/design-system/components/N8nBreadcrumbs/Breadcrumbs.vue';
 import { useI18n } from '@n8n/i18n';
@@ -158,6 +160,29 @@ const currentSort = ref('updatedAt:desc');
 const currentFolderId = ref<string | null>(null);
 
 const showCardsBadge = ref(false);
+
+const showAiWorkflowMaker = ref(false);
+const aiPrompt = ref('');
+const aiGeneratedWorkflow = ref(null);
+
+function openAiWorkflowMaker() {
+	showAiWorkflowMaker.value = true;
+	aiPrompt.value = '';
+	aiGeneratedWorkflow.value = null;
+}
+
+function closeAiWorkflowMaker() {
+	showAiWorkflowMaker.value = false;
+}
+
+async function generateAiWorkflow() {
+	// Placeholder: Replace with real AI integration (local model, API, etc.)
+	aiGeneratedWorkflow.value = {
+		name: 'AI Generated Workflow',
+		nodes: [],
+		description: `Generated for: ${aiPrompt.value}`,
+	};
+}
 
 /**
  * Folder actions
@@ -2284,6 +2309,74 @@ const onNameSubmit = async (name: string) => {
 			</div>
 		</template>
 	</ResourcesListLayout>
+
+	<div style="display: flex; align-items: center; margin-bottom: 1rem;">
+		<N8nButton type="primary" @click="openAiWorkflowMaker" style="margin-right: 1rem;">
+			AI Workflow Maker
+		</N8nButton>
+		<N8nTooltip
+			placement="top"
+			:disabled="
+				!(
+					projectPages.isOverviewSubPage ||
+					projectPages.isSharedSubPage ||
+					(!readOnlyEnv && hasPermissionToCreateFolders)
+				)
+			"
+		>
+			<template #content>
+				<span
+					v-if="
+						(projectPages.isOverviewSubPage || projectPages.isSharedSubPage) &&
+						!showRegisteredCommunityCTA
+					"
+				>
+					<span v-if="teamProjectsEnabled">
+						{{ i18n.baseText('folders.add.overview.withProjects.message') }}
+					</span>
+					<span v-else>
+						{{ i18n.baseText('folders.add.overview.community.message') }}
+					</span>
+				</span>
+				<span v-else>
+					{{
+						currentParentName
+							? i18n.baseText('folders.add.to.parent.message', {
+									interpolate: { parent: currentParentName },
+								})
+							: i18n.baseText('folders.add.here.message')
+					}}
+				</span>
+			</template>
+			<N8nButton
+				size="small"
+				icon="folder-plus"
+				type="tertiary"
+				data-test-id="add-folder-button"
+				:class="$style['add-folder-button']"
+				:disabled="!showRegisteredCommunityCTA && (readOnlyEnv || !hasPermissionToCreateFolders)"
+				@click="createFolderInCurrent"
+			/>
+		</N8nTooltip>
+	</div>
+
+	<N8nModal v-if="showAiWorkflowMaker" @close="closeAiWorkflowMaker" title="AI Workflow Maker">
+		<div style="margin-bottom: 1rem;">
+			<N8nInputLabel label="Describe your workflow:">
+				<N8nInput v-model="aiPrompt" placeholder="e.g. When I get an email, save the attachment to Google Drive and notify me on Slack." />
+			</N8nInputLabel>
+		</div>
+		<N8nButton type="primary" @click="generateAiWorkflow" :disabled="!aiPrompt">
+			Generate Workflow
+		</N8nButton>
+		<div v-if="aiGeneratedWorkflow" style="margin-top: 2rem;">
+			<N8nHeading size="medium">Generated Workflow (Preview)</N8nHeading>
+			<pre>{{ JSON.stringify(aiGeneratedWorkflow, null, 2) }}</pre>
+			<N8nButton type="success" style="margin-top: 1rem;">
+				Import to n8n
+			</N8nButton>
+		</div>
+	</N8nModal>
 </template>
 
 <style lang="scss" module>

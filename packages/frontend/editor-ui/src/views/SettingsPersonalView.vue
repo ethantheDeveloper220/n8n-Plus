@@ -66,6 +66,22 @@ const themeOptions = ref<Array<{ name: ThemeOption; label: BaseTextKey }>>([
 		name: 'dark',
 		label: 'settings.personal.theme.dark',
 	},
+	{
+		name: 'blue',
+		label: 'settings.personal.theme.blue',
+	},
+	{
+		name: 'green',
+		label: 'settings.personal.theme.green',
+	},
+	{
+		name: 'high-contrast',
+		label: 'settings.personal.theme.highContrast',
+	},
+	{
+		name: 'purple',
+		label: 'settings.personal.theme.purple',
+	},
 ]);
 
 const uiStore = useUIStore();

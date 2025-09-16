@@ -286,3 +286,51 @@
 		}
 	}
 }
+
+.theme-dark {
+  --color-primary: #1e90ff;
+  --color-background-base: #181818;
+  --color-background-light: #232323;
+  --color-text-dark: #f0f0f0;
+  --color-text-light: #b0b0b0;
+}
+
+.theme-light {
+  --color-primary: #ff9800;
+  --color-background-base: #ffffff;
+  --color-background-light: #f5f5f5;
+  --color-text-dark: #222222;
+  --color-text-light: #666666;
+}
+
+.theme-blue {
+  --color-primary: #2196f3;
+  --color-background-base: #e3f2fd;
+  --color-background-light: #bbdefb;
+  --color-text-dark: #0d47a1;
+  --color-text-light: #1976d2;
+}
+
+.theme-green {
+  --color-primary: #4caf50;
+  --color-background-base: #e8f5e9;
+  --color-background-light: #c8e6c9;
+  --color-text-dark: #1b5e20;
+  --color-text-light: #388e3c;
+}
+
+.theme-high-contrast {
+  --color-primary: #000000;
+  --color-background-base: #ffffff;
+  --color-background-light: #ffff00;
+  --color-text-dark: #000000;
+  --color-text-light: #ff0000;
+}
+
+.theme-purple {
+  --color-primary: #9c27b0;
+  --color-background-base: #f3e5f5;
+  --color-background-light: #ce93d8;
+  --color-text-dark: #4a148c;
+  --color-text-light: #7b1fa2;
+}
