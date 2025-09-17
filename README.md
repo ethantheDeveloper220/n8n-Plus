@@ -1,6 +1,47 @@
 # n8n PLUS: Self-Host & Enhanced Features Guide
 
-Welcome to your enhanced n8n instance! This guide covers how to self-host n8n and use the new features added to your custom build.
+## 🚀 Quick Start: Cloning & Running This Project
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/ethantheDeveloper220/n8n-Plus.git
+   cd n8n-Plus
+   ```
+
+2. **(Recommended) Start with Docker:**
+   - Make sure you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
+   - Run:
+     ```sh
+     docker run -d --name n8n -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n
+     ```
+   - On Windows, use:
+     ```sh
+     docker run -d --name n8n -p 5678:5678 -v C:/Users/<YourUser>/.n8n:/home/node/.n8n n8nio/n8n
+     ```
+   - Open [http://localhost:5678](http://localhost:5678) in your browser.
+
+3. **(Alternative) Run with Node.js for Development:**
+   - Install [Node.js v18+](https://nodejs.org/)
+   - Install dependencies:
+     ```sh
+     pnpm install # or yarn install / npm install
+     ```
+   - Build and start:
+     ```sh
+     pnpm build
+     pnpm start
+     ```
+   - For hot-reload development:
+     ```sh
+     pnpm dev
+     ```
+
+4. **Push your changes (if you have write access):**
+   ```sh
+   git add .
+   git commit -m "Describe your changes"
+   git push
+   ```
 
 ---
 
@@ -58,8 +99,8 @@ docker run -d --name n8n -p 5678:5678 \
 
 ### Clone the Repo and Install Dependencies
 ```sh
-git clone https://github.com/n8n-io/n8n.git
-cd n8n
+git clone https://github.com/ethantheDeveloper220/n8n-Plus.git
+cd n8n-Plus
 pnpm install # or yarn install / npm install
 ```
 
@@ -154,8 +195,6 @@ By default, Docker uses the built-in frontend. To use your local changes:
 ---
 
 Enjoy your powerful, self-hosted n8n instance with all the latest features!
-
-
 
 
 
