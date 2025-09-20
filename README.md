@@ -156,7 +156,7 @@ By default, Docker uses the built-in frontend. To use your local changes:
 
 ---
 
-# 🚀 Enhanced Features in This Build
+# 🚀 Enhanced Features in This Build(coming Soon🤫)
 
 ## 🎨 Multiple Web Themes
 - Choose from 6+ themes (Dark, Light, Blue, Green, High-Contrast, Purple, etc.)
