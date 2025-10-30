@@ -1,5 +1,5 @@
 # n8n PLUS: Self-Host & Enhanced Features Guide
-
+#warning discontinued for now 😭😭😭#
 ## 🚀 Quick Start: Cloning & Running This Project
 
 1. **Clone the repository:**
